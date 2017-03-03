@@ -47,7 +47,7 @@ app.use(controller.get('/category',function*() {
 }));
 app.use(controller.get('/male',function*() {
     this.set("Cache-Control","no-cache");
-    this.body = yield render('category',{title:'男生'});
+    this.body = yield render('male',{title:'男生'});
 }));
 app.use(controller.get('/female',function*() {
     this.set("Cache-Control","no-cache");
