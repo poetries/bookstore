@@ -47,11 +47,11 @@ app.use(controller.get('/category',function*() {
 }));
 app.use(controller.get('/male',function*() {
     this.set("Cache-Control","no-cache");
-    this.body = yield render('male',{title:'男生'});
+    this.body = yield render('male',{nav:'男生频道'});
 }));
 app.use(controller.get('/female',function*() {
     this.set("Cache-Control","no-cache");
-    this.body = yield render('female',{title:'女生'});
+    this.body = yield render('female',{nav:'女生频道'});
 }));
 
 app.use(controller.get('/book',function*() {
@@ -59,7 +59,7 @@ app.use(controller.get('/book',function*() {
     var querystring = require("querystring");
     var params = querystring.parse(this.req._parsedUrl.query);
     var bookId = params.id;
-    this.body = yield render('book',{bookId:bookId});
+    this.body = yield render('book',{nav:'书籍详情',bookId:bookId});
 }));
 
 // ajax 返回的数据
