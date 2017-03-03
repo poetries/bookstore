@@ -59,14 +59,14 @@
 .header-tab i {
     bottom: -1px;
 }
-.header-tab i:before {
+/*.header-tab i:before {
     content: '';
     display: block;
     height: 2px;
     width: 34px;
     margin: 0 auto;
     background: #777;
-}
+}*/
 .header-tab a:before {
     content: '\4e66\67b6';
     display: block;

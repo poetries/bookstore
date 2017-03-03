@@ -3,13 +3,28 @@ exports.get_test_data = function () {
     var content = fs.readFileSync('./mock/test.json','utf-8');
     return content;
 }
-exports.get_book_data = function (id) {
+exports.get_chapter_data = function () {
+    var content = fs.readFileSync('./mock/reader/chapter.json','utf-8');
+    return content;
+}
+exports.get_chapter_content_data = function (id) {
+    if (!id) {
+        id = "1";
+    }
+    var content = fs.readFileSync('./mock/reader/data/data'+id+'.json','utf-8');
+    return content;
+}
+exports.get_book_data = function(id) {
     if (!id) {
         id = "18218";
     }
-    var content = fs.readFileSync('./mock/book/'+id+'.json','utf-8');
-    return content;
+    if(fs.existsSync('./mock/book/' + id + '.json')){
+        return fs.readFileSync('./mock/book/' + id + '.json', 'utf-8');
+    }else{
+        return fs.readFileSync('./mock/book/18218.json', 'utf-8');
+    }
 }
+
 exports.get_index_data = function () {
     var content = fs.readFileSync('./mock/home.json','utf-8');
     return content;
@@ -47,7 +62,8 @@ exports.get_search_data = function (start,end,keyword) {
         var http_request = {
           hostname: 'dushu.xiaomi.com',
           port: 80,
-          path: '/store/v0/lib/query/onebox?' + content
+          path: '/store/v0/lib/query/onebox?' + content,
+          method: 'GET'
         };
         req_obj = http.request(http_request, function (_res) {
             var content = '';
@@ -60,7 +76,7 @@ exports.get_search_data = function (start,end,keyword) {
             });
         });
         req_obj.on('error',function () {
-            
+
         });
         req_obj.end();
     }

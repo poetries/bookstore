@@ -1,4 +1,8 @@
 $.get('/ajax/index', function (result) {
+    var windowWidth = $(window).width();
+    if (windowWidth<320) {
+        windowWidth = 320;
+    }
     new Vue({
         el: "#app",
         data: {
@@ -14,7 +18,9 @@ $.get('/ajax/index', function (result) {
             header_position: 0,
             header_duration: 0,
             tab_1_class: 'Switch-tab__on',
-            tab_2_class: ''
+            tab_2_class: '',
+            screen_width: windowWidth,
+            double_screen_width: windowWidth*2
         },
         methods: {
             tabSwitch: function (pos) {
@@ -26,7 +32,7 @@ $.get('/ajax/index', function (result) {
                     this.tab_1_class = 'Switch-tab__on';
                     this.tab_2_class = '';
                 } else {
-                    this.position = (-734);
+                    this.position = (-windowWidth);
                     this.header_position = 277;
                     this.tab_2_class = 'Switch-tab__on';
                     this.tab_1_class = '';
