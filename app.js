@@ -36,6 +36,7 @@ app.use(controller.get('/search',function*() {
     this.set("Cache-Control","no-cache");
     this.body = yield render('search');
 }));
+
 app.use(controller.get('/reader',function*() {
     this.set("Cache-Control","no-cache");
     this.body = yield render('reader');

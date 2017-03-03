@@ -5,21 +5,23 @@
         </p>
     </div>
     <ul class="list-h5">
-        <li v-for="item in hot" >
-            <div class="book-h5">
-                <div class="book-h5__cover">
-                    <img :src="item.cover" alt="{{ item.title }}">
-                    <p class="book-h5__finish">完结</p>
-                </div>
-                <div class="book-h5__info">
-                    <p class="book-h5__title">{{ item.title }}</p>
-                    <p class="book-h5__author">{{ item.author }}</p>
-                    <p class="book-h5__summary">{{ item.summary }}</p>
-                    <div class="book-h5__wrap">
-                        <div class="book-h5__tag" v-for="tag in item.tags">{{ tag }}</div>
+        <a href="/book">
+            <li v-for="item in hot" >
+                <div class="book-h5">
+                    <div class="book-h5__cover">
+                        <img :src="item.cover" alt="{{ item.title }}">
+                        <p class="book-h5__finish">完结</p>
+                    </div>
+                    <div class="book-h5__info">
+                        <p class="book-h5__title">{{ item.title }}</p>
+                        <p class="book-h5__author">{{ item.author }}</p>
+                        <p class="book-h5__summary">{{ item.summary }}</p>
+                        <div class="book-h5__wrap">
+                            <div class="book-h5__tag" v-for="tag in item.tags">{{ tag }}</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </li>
+            </li>
+        </a>
     </ul>
 </section>
